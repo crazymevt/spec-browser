@@ -1,0 +1,10 @@
+*.fasl
+*~
+.#*
+\#*#
+.DS_Store
+bin/
+build/
+scratch.lisp
+# Downloaded sources: dpANS3, the HyperSpec (never redistributed) and Community Spec pages
+sources/
