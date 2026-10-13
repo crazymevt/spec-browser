@@ -3,7 +3,8 @@
 A browser for the Common Lisp standard and for library documentation, starting
 with its data: the standard converted from the dpANS3 TeX sources into a
 docset, a small format any Lisp program can read (see
-[docs/docset-format.md](docs/docset-format.md)).
+[docs/docset-format.md](docs/docset-format.md)). The app itself is planned in
+[DESIGN.md](DESIGN.md).
 
 ## Layout
 
