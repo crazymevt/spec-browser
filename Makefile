@@ -3,7 +3,7 @@
 LISP ?= sbcl
 RUN = $(LISP) --non-interactive --eval '(require :asdf)' --eval '(push (truename ".") asdf:*central-registry*)'
 
-.PHONY: sources export check-docsets compare clean
+.PHONY: sources export check-docsets compare clean run
 
 DPANS = https://www.cs.cmu.edu/afs/cs/project/ai-repository/ai/lang/lisp/doc/standard/ansi/dpans
 HYPERSPEC = https://ftp.lispworks.com/pub/software_tools/reference/HyperSpec-7-0.tar.gz
@@ -31,3 +31,6 @@ compare:
 clean:
 	rm -rf build
 	find . -name '*.fasl' -delete
+
+run:
+	$(RUN)  --eval '(ql:quickload :spec-browser/app)' --eval '(spec-browser.app:main)'

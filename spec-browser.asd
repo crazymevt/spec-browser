@@ -5,7 +5,8 @@
   :author "Jessie Hughart"
   :license "MIT"
   :version "0.1.0"
-  :depends-on ("spec-browser/docset"))
+  :depends-on ("spec-browser/app")
+  :entry-point "spec-browser.app:main")
 
 (defsystem "spec-browser/docset"
   :description "Reads and writes docsets, the browser's documentation format. No dependencies."
@@ -52,3 +53,22 @@
                 :components ((:file "package")
                              (:file "html")
                              (:file "compare")))))
+
+(defsystem "spec-browser/view"
+  :description "Draws docset entries into a GTK text view and keeps a page's history. The part that moves into Cadre."
+  :author "Jessie Hughart"
+  :license "MIT"
+  :depends-on ("gtk4" "spec-browser/docset")
+  :components ((:module "src/view"
+                :serial t
+                :components ((:file "package")))))
+
+(defsystem "spec-browser/app"
+  :description "The spec browser's window: header bar, search, contents, and its own styles and highlighter."
+  :author "Jessie Hughart"
+  :license "MIT"
+  :depends-on ("spec-browser/view")
+  :components ((:module "src/app"
+                :serial t
+                :components ((:file "package")
+                             (:file "main")))))
