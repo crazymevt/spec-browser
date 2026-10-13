@@ -33,4 +33,4 @@ clean:
 	find . -name '*.fasl' -delete
 
 run:
-	$(RUN)  --eval '(ql:quickload :spec-browser/app)' --eval '(spec-browser.app:main)'
+	$(RUN) --eval '(ql:quickload :spec-browser/app)' --eval '(spec-browser.app:main)'

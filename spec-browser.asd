@@ -1,7 +1,7 @@
 ;;;; spec-browser.asd
 
 (defsystem "spec-browser"
-  :description "A browser for the Common Lisp standard and library docs. For now, its docset reader."
+  :description "A browser for the Common Lisp standard and library docs."
   :author "Jessie Hughart"
   :license "MIT"
   :version "0.1.0"
