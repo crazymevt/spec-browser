@@ -105,6 +105,7 @@ gives it) for the tag to use:
 | `(:syntax ...)` | `:syntax`, the name in `:syntax-name` |
 | `(:code ...)` | `:code` |
 | `(:param ...)` | `:param` |
+| `(:quote ...)` | `:quote` |
 | `(:i ...)`, `(:b ...)` | `:italic`, `:bold` |
 | `(:ref ...)`, `(:term ...)`, `(:link ...)` | `:link` |
 | `(:note ...)` | `:note` |

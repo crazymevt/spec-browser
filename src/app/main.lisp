@@ -41,8 +41,9 @@
     (setf (gtk:scrolled-window-child scrolled-window) text-view)
     (setf (gtk:window-child window) scrolled-window)
     
-    (let ((entry (spec-docset:docset-entry (find-docset *docsets* :id "common-lisp") "accessor/car")))
-      (spec-browser.view:render-entry text-view entry))
+    (let* ((docset (find-docset *docsets* :id "common-lisp"))
+           (entry (spec-docset:docset-entry docset "function/mapc")))
+      (spec-browser.view:render-entry text-view entry :docset docset))
     
     (gtk:window-present window)))
 
