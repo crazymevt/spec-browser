@@ -3,14 +3,13 @@
 A browser for the Common Lisp standard and for library documentation, starting
 with its data: the standard converted from the dpANS3 TeX sources into a
 docset, a small format any Lisp program can read (see
-[docs/docset-format.md](docs/docset-format.md)). The app itself is planned in
+[the docset library](../docset/docs/format.md), which reads and writes it). The app itself is planned in
 [DESIGN.md](DESIGN.md).
 
 ## Layout
 
 | Path | Contents |
 | --- | --- |
-| `src/docset/` | Reads, writes and checks docsets. No dependencies, so the app and Cadre can share it. |
 | `src/import/` | Reads the dpANS3 TeX sources into entries. |
 | `src/export/` | Writes the Common Lisp docset from them. |
 | `src/compare/` | Compares the imported entries with the HyperSpec and the Community Spec. |

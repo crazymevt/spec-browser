@@ -7,14 +7,14 @@
 
 (defun load-docsets ()
   (let ((docsets
-         (spec-docset:find-docsets
+         (docset:find-docsets
           :directories (list (data-directory)))))
     (loop for docset in docsets
           do
             (format t "title: ~s id: ~s Length: ~d~%" 
-                    (spec-docset:docset-title docset)
-                    (spec-docset:docset-id docset)
-                    (length (spec-docset:docset-index docset)))
+                    (docset:docset-title docset)
+                    (docset:docset-id docset)
+                    (length (docset:docset-index docset)))
             (finish-output))
     docsets))
 
@@ -22,8 +22,8 @@
   (unless (or title id)
     (error "find-docset requires either a title or an id"))
   (let ((lookup-fn (if title 
-                       #'spec-docset:docset-title
-                       #'spec-docset:docset-id)))
+                       #'docset:docset-title
+                       #'docset:docset-id)))
     (find (or title id) docsets :test 'string= :key lookup-fn)))
 
 (defun activate (app)
@@ -42,7 +42,7 @@
     (setf (gtk:window-child window) scrolled-window)
     
     (let* ((docset (find-docset *docsets* :id "common-lisp"))
-           (entry (spec-docset:docset-entry docset "function/mapc")))
+           (entry (docset:docset-entry docset "function/mapc")))
       (spec-browser.view:render-entry text-view entry 
                                       :docset docset 
                                       :style (make-style 

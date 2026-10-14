@@ -20,8 +20,8 @@ export:
 
 # Check every docset the browser can find: its own, and gtk4's and raylib's when installed
 check-docsets:
-	$(RUN) --eval '(ql:quickload :spec-browser/docset)' \
-		--eval '(let ((n 0)) (dolist (d (spec-docset:find-docsets :directories (list (truename "data/")))) (incf n (spec-docset:check-docset (spec-docset:docset-directory d)))) (uiop:quit (if (zerop n) 0 1)))'
+	$(RUN) --eval '(ql:quickload :docset)' \
+		--eval '(let ((n 0)) (dolist (d (docset:find-docsets :directories (list (truename "data/")))) (incf n (docset:check-docset (docset:docset-directory d)))) (uiop:quit (if (zerop n) 0 1)))'
 
 # Compare the imported entries with the HyperSpec and the Community Spec; writes build/compare/
 compare:

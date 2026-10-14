@@ -8,21 +8,11 @@
   :depends-on ("spec-browser/app")
   :entry-point "spec-browser.app:main")
 
-(defsystem "spec-browser/docset"
-  :description "Reads and writes docsets, the browser's documentation format. No dependencies."
-  :author "Jessie Hughart"
-  :license "MIT"
-  :components ((:module "src/docset"
-                :serial t
-                :components ((:file "package")
-                             (:file "docset")
-                             (:file "check")))))
-
 (defsystem "spec-browser/export"
   :description "Writes the Common Lisp docset from the dpANS3 sources."
   :author "Jessie Hughart"
   :license "MIT"
-  :depends-on ("spec-browser/import" "spec-browser/docset")
+  :depends-on ("spec-browser/import" "docset")
   :components ((:module "src/export"
                 :serial t
                 :components ((:file "package")
@@ -58,7 +48,7 @@
   :description "Draws docset entries into a GTK text view and keeps a page's history. The part that moves into Cadre."
   :author "Jessie Hughart"
   :license "MIT"
-  :depends-on ("gtk4" "spec-browser/docset")
+  :depends-on ("gtk4" "docset")
   :components ((:module "src/view"
                 :serial t
                 :components ((:file "package")

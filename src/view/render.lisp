@@ -95,15 +95,15 @@
   (let ((buffer (gtk:text-view-buffer text-view))
         (*style* style)
         (styles (list :body))
-        (kind (spec-docset:entry-kind-name entry)))
+        (kind (docset:entry-kind-name entry)))
     (setf (gtk:text-buffer-text buffer) "")
-    (insert-buffer-string buffer (format nil "~{~a~^, ~}" (spec-docset:entry-names entry)) (cons :title styles))
+    (insert-buffer-string buffer (format nil "~{~a~^, ~}" (docset:entry-names entry)) (cons :title styles))
     (when kind
       (insert-buffer-string buffer " " styles)
       (insert-buffer-string buffer kind (cons :kind styles)))
     (insert-buffer-string buffer (string #\Newline) styles)
     
-    (loop for section in (spec-docset:entry-sections entry)
+    (loop for section in (docset:entry-sections entry)
           for i from 0
           do
             (when (> i 0)

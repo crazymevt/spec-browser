@@ -11,11 +11,11 @@ The data side is already done; see "What exists" below.
 
 ## What exists
 
-- **Docsets** (see [docs/docset-format.md](docs/docset-format.md)): three files of
+- **Docsets** (see [docset/docs/format.md](../docset/docs/format.md)): three files of
   plain Lisp data per docset. The Common Lisp one is in `data/common-lisp/`
   (1,389 entries); gtk4 and raylib build theirs into `docs/docset/` with
   `make docset` (15,137 and 862 entries).
-- **The reader**, system `spec-browser/docset`, package `spec-docset`, no dependencies:
+- **The reader**, the `docset` library (its own repo, `../docset/`), no dependencies:
   - `(find-docsets :directories (list data-dir))` opens every docset it can find.
   - `docset-title`, `docset-id`, `docset-toc`, `docset-index`.
   - `(search-names docset "hash")` returns index records, best first.
@@ -28,10 +28,10 @@ The data side is already done; see "What exists" below.
 Try it at the REPL before writing any UI:
 
 ```lisp
-(ql:quickload :spec-browser/docset)
-(defvar *docsets* (spec-docset:find-docsets :directories (list #p"~/projects/lisp/spec-browser/data/")))
-(spec-docset:search-names (first *docsets*) "hash")
-(spec-docset:docset-entry (first *docsets*) "function/mapc")
+(ql:quickload :docset)
+(defvar *docsets* (docset:find-docsets :directories (list #p"~/projects/lisp/spec-browser/data/")))
+(docset:search-names (first *docsets*) "hash")
+(docset:docset-entry (first *docsets*) "function/mapc")
 ```
 
 ## Two layers: the view and the app
@@ -41,7 +41,7 @@ The code is split by what moves into Cadre later:
 - **The view** (`src/view/`, package `spec-browser.view`): draws an entry into a
   text buffer, and keeps a page's history. It knows nothing about windows,
   colors, fonts, highlighting or where docsets live; whoever uses it (the
-  app, or Cadre) supplies those. It depends only on `gtk4` and `spec-docset`.
+  app, or Cadre) supplies those. It depends only on `gtk4` and `docset`.
 - **The app** (`src/app/`, package `spec-browser.app`): the window, header bar,
   sidebar, search list, contents tree, and its own styles and highlighter.
 
@@ -187,7 +187,7 @@ tests/
 ```
 
 New systems in `spec-browser.asd`: `spec-browser/view` depending on `"gtk4"` and
-`"spec-browser/docset"`; `spec-browser/app` depending on `"spec-browser/view"`;
+`"docset"`; `spec-browser/app` depending on `"spec-browser/view"`;
 `spec-browser/tests` with Parachute. Add a `make run` target. On macOS GTK must
 run on the first thread, so in Cadre use Run GTK App.
 
@@ -263,7 +263,7 @@ When the app works, the move is a copy plus a few small adapters:
 
 | Piece | In Cadre |
 | --- | --- |
-| `src/docset/` (`spec-docset`) | copied into Cadre's core; it has no dependencies, which core requires |
+| the `docset` library | a dependency of Cadre's core; it has no dependencies of its own, which core requires |
 | `data/common-lisp/` | shipped with Cadre's resources; the gtk4 and raylib docsets still come from those libraries |
 | `src/view/` | copied into Cadre's UI |
 | style table | maps the style keywords to Cadre's theme faces and editor font, recolored on theme change |
