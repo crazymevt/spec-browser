@@ -61,7 +61,8 @@
   :depends-on ("gtk4" "spec-browser/docset")
   :components ((:module "src/view"
                 :serial t
-                :components ((:file "package")))))
+                :components ((:file "package")
+                             (:file "render")))))
 
 (defsystem "spec-browser/app"
   :description "The spec browser's window: header bar, search, contents, and its own styles and highlighter."

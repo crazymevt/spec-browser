@@ -1,3 +1,3 @@
 (defpackage #:spec-browser.view
   (:use #:cl)
-  (:export ))
+  (:export #:render-entry))

@@ -40,6 +40,10 @@
         (scrolled-window (make-instance 'gtk:scrolled-window)))
     (setf (gtk:scrolled-window-child scrolled-window) text-view)
     (setf (gtk:window-child window) scrolled-window)
+    
+    (let ((entry (spec-docset:docset-entry (find-docset *docsets* :id "common-lisp") "accessor/car")))
+      (spec-browser.view:render-entry text-view entry))
+    
     (gtk:window-present window)))
 
 (defun main ()
