@@ -72,4 +72,5 @@
   :components ((:module "src/app"
                 :serial t
                 :components ((:file "package")
+                             (:file "styles")
                              (:file "main")))))

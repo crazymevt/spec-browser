@@ -43,7 +43,11 @@
     
     (let* ((docset (find-docset *docsets* :id "common-lisp"))
            (entry (spec-docset:docset-entry docset "function/mapc")))
-      (spec-browser.view:render-entry text-view entry :docset docset))
+      (spec-browser.view:render-entry text-view entry 
+                                      :docset docset 
+                                      :style (make-style 
+                                              (gtk:text-buffer-get-tag-table
+                                               (gtk:text-view-get-buffer text-view)))))
     
     (gtk:window-present window)))
 

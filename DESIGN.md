@@ -22,6 +22,7 @@ The data side is already done; see "What exists" below.
   - `(lookup-symbol docsets "mapcar" "COMMON-LISP")` returns `(docset . record)` pairs.
   - `(docset-entry docset id)` reads an entry (cached after the first time).
   - `record-id`, `record-names`, `record-kind-name`, `record-summary`, `record-parent`.
+  - `entry-id`, `entry-names`, `entry-kind-name`.
   - `entry-sections` gives `(("Syntax" block...) ("Description" block...) ...)`.
 
 Try it at the REPL before writing any UI:

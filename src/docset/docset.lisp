@@ -126,6 +126,9 @@ ENTRIES is a plist starting (:entry \"id\" ...) as docs/docset-format.md describ
                   (file-position in (record-position record))
                   (read-data in)))))))
 
+(defun entry-id (entry) (second entry))
+(defun entry-names (entry) (getf (cddr entry) :names))
+(defun entry-kind-name (entry) (getf (cddr entry) :kind-name))
 (defun entry-sections (entry) (getf (cddr entry) :sections))
 
 (defun entry-section (entry label)

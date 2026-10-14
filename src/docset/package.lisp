@@ -14,7 +14,7 @@
    #:find-docsets #:*docset-directories* #:*library-systems*
    #:lookup-symbol #:search-names
    ;; Entries
-   #:entry-sections #:entry-section
+   #:entry-id #:entry-names #:entry-kind-name #:entry-sections #:entry-section
    ;; Checking
    #:check-docset))
 
