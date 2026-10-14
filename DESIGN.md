@@ -11,7 +11,7 @@ The data side is already done; see "What exists" below.
 
 ## What exists
 
-- **Docsets** (see [docset/docs/format.md](../docset/docs/format.md)): three files of
+- **Docsets** (see [docset/docs/format.md](https://github.com/crazymevt/docset/blob/main/docs/format.md)): three files of
   plain Lisp data per docset. The Common Lisp one is in `data/common-lisp/`
   (1,389 entries); gtk4 and raylib build theirs into `docs/docset/` with
   `make docset` (15,137 and 862 entries).
