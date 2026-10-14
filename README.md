@@ -44,8 +44,8 @@ needs `curl` and `tar`. Only the docset library is needed for that, not gtk4.
 
 ## Docsets
 
-The browser reads its own Common Lisp docset, and the docsets gtk4 and raylib
-build in their `docs/docset/` when ASDF can find those libraries (`make docset`
+The browser reads its own Common Lisp docset, and the docsets [gtk4](https://github.com/crazymevt/gtk4) and
+[raylib](https://github.com/crazymevt/raylib) build in their `docs/docset/` when ASDF can find those libraries (`make docset`
 in each). These aren't committed; they're regenerated.
 
 It also reads every docset in `~/.local/share/docsets/`. The
